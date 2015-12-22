@@ -37,7 +37,8 @@ my $userAgent = LWP::UserAgent->new();
 # new bug object), keep the following message simple. All the details of the
 # new bug will be posted in the following bug_end_of_update event.
 sub bug_end_of_create {
-	my (undef, ($bug)) = @_;
+	my (undef, ($args)) = @_;
+	my $bug = $$args{'bug'};
 	my $user = Bugzilla->user->name;
 	my $id = $bug->id;
 	my $product = $bug->product;
